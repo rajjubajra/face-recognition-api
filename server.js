@@ -16,7 +16,7 @@ database = {
       name: 'john',
       email: 'john@email.com',
       password: 'cookies',
-      entires: 0,
+      entries: 0,
       joined: new Date()
     },
     {
@@ -24,7 +24,7 @@ database = {
       name: 'sally',
       email: 'sally@email.com',
       password: 'apple',
-      entires: 0,
+      entries: 0,
       joined: new Date()
     },
   ]
@@ -37,6 +37,7 @@ app.get('/',(req, res) => {
 app.post('/signin', (req, res) => {
   if( req.body.email === database.users[0].email
       && req.body.password === database.users[0].password){
+        //res.json(database.uses[0]);
         res.json('success');
       }else{
         res.status(400).json('login fail');
@@ -49,8 +50,7 @@ app.post('/register', (req, res) => {
         id: '125',
         name: name,
         email: email,
-        password: password,
-        entires: 0,
+        entries: 0,
         joined: new Date()
   })
   res.json(database.users[database.users.length-1]);
@@ -72,14 +72,14 @@ app.get('/profile/:id', (req, res) => {
   // }
 })
 
-app.put('/image', (req,res) =>{
+app.put('/image', (req,res) => {
       const {id} = req.body;
       let found = false;
       database.users.forEach( user => {
         found = true;
         if(user.id === id){
-          user.entires++;
-          return res.json(user.entires);
+          user.entries++;
+          return res.json(user.entries);
         }
       })
       if(found){
