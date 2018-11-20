@@ -51,7 +51,7 @@ database = {
 }
 
 // app.get('/',(req, res) => {res.json(database.users);} )
-app.get('/',(req, res) => {res.json("it is working");} )
+app.get('/',(req, res) => {res.send("it is working")} )
 
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt)})
 
